@@ -1,0 +1,57 @@
+<ul class="nav flex-column">
+  <li class="nav-item" *ngFor="let item of menu.categories; let i = index">
+    <a class="nav-link" *ngIf="item.sublevels === undefined" [routerLink]="['/products/category', item.id]" routerLinkActive="active"  >
+      {{item.name}}
+    </a>
+
+
+    <a data-toggle="collapse" *ngIf="item.sublevels !== undefined" href="#{{'m' + i}}" class="nav-link">
+      {{item.name}}
+    </a>
+
+
+    <div id="{{'m' + i}}" class="collapse" *ngIf="item.sublevels !== undefined">
+      <ul class="nav flex-column">
+        <li *ngFor="let childitem of item.sublevels; let j = index" class="nav-item">
+          <a class="nav-link" *ngIf="childitem.sublevels === undefined" [routerLink]="['/products/category', childitem.id]" routerLinkActive="active">
+            {{childitem.name}}
+          </a>
+
+          <a data-toggle="collapse" *ngIf="childitem.sublevels !== undefined" href="#{{'m' + i + 'e' + j}}"
+            class="nav-link">
+            {{childitem.name}}
+          </a>
+
+          <div id="{{'m' + i + 'e' + j}}" class="collapse" *ngIf="item.sublevels !== undefined">
+            <ul class="nav flex-column">
+              <li *ngFor="let levelthree of childitem.sublevels; let p = index" class="nav-item">
+
+                <a class="nav-link" *ngIf="levelthree.sublevels === undefined" [routerLink]="['/products/category', levelthree.id]" routerLinkActive="active">
+                  {{levelthree.name}}
+                </a>
+
+                <a data-toggle="collapse" *ngIf="levelthree.sublevels !== undefined"
+                  href="#{{'m' + i + 'e' + j + 'p' + p}}" class="nav-link">
+                  {{levelthree.name}}
+                </a>
+
+                <div id="{{'m' + i + 'e' + j + 'p' + p}}" class="collapse" *ngIf="item.sublevels !== undefined">
+                  <ul class="nav flex-column">
+                    <li class="nav-item" *ngFor="let levelFour of levelthree.sublevels; let q = index">
+                      <a class="nav-link" [routerLink]="['/products/category', levelFour.id]" routerLinkActive="active">
+                        {{levelFour.name}}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+              </li>
+            </ul>
+          </div>
+
+        </li>
+      </ul>
+    </div>
+
+  </li>
+</ul>
