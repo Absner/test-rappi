@@ -1,18 +1,29 @@
 <div class="card">
   <div class="card-body container-fluid">
-    <div class="row">
-      <div class="col-sm-8 col-md-9">
+    <div fxLayout="row wrap">
+      <div fxFlex.gt-sm="70" fxFlex.gt-xs="70" fxFlex="70">
         <h4>{{product.name}}</h4>
         <h5>{{product.price}}</h5>
         <small>Stock: {{product.quantity}}</small>
       </div>
-      <div class="col-sm-4 col-md-4">
-        <button mat-fab>
+      <div class="add-card text-center" fxFlex.gt-sm="30" fxFlex.gt-xs="30" fxFlex="30">
+        <button [disabled]="!product.available" (click)="addCard(product)" class="btn-card" mat-fab>
           <i class="material-icons">
             add_shopping_cart
           </i>
         </button>
       </div>
     </div>
+  </div>
+
+  <div class="card-footer text-white text-center"
+    [ngClass]="{'bg-success': product.available === true, 'bg-danger': product.available === false}">
+
+    <span *ngIf="product.available === false">
+      No disponible
+    </span>
+    <span *ngIf="product.available !== false">
+      Disponible
+    </span>
   </div>
 </div>

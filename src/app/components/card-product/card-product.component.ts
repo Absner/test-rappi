@@ -9,10 +9,19 @@ import { IProduct } from 'src/app/models/product.models';
 export class CardProductComponent implements OnInit {
 
   @Input() product: IProduct;
+  @Output() selection = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+
+  /**
+   * addCard
+   */
+  public addCard(option: IProduct) {
+    this.selection.emit(option);
   }
 
 }

@@ -23,6 +23,13 @@ export class PageHomeComponent implements OnInit {
     this.getProductos();
   }
 
+  /**
+   * addCard
+   */
+  public addCard(product: IProduct) {
+    console.log(product);
+  }
+
   private getProductos() {
     this.productsService.getProducts().subscribe((response) =>  {
       console.log('productos', response);
