@@ -9,6 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { CardProductComponent } from './card-product/card-product.component';
 import { FilterSearchComponent } from './filter-search/filter-search.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MultiplePipe } from './pipe/multiple.pipe';
 
 const COMPONENTS: Array<any> = [
   NavbarComponent,
@@ -17,7 +18,7 @@ const COMPONENTS: Array<any> = [
 ];
 
 @NgModule({
-  declarations: [COMPONENTS],
+  declarations: [COMPONENTS, MultiplePipe],
   imports: [
     CommonModule,
     MatButtonModule,
