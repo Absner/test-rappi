@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button'
 import { NavbarComponent } from './navbar/navbar.component';
 import { CardProductComponent } from './card-product/card-product.component';
 
-const COMPONENTS: Array<any>  = [
+const COMPONENTS: Array<any> = [
   NavbarComponent,
   CardProductComponent
 ];
@@ -11,7 +12,8 @@ const COMPONENTS: Array<any>  = [
 @NgModule({
   declarations: [COMPONENTS],
   imports: [
-    CommonModule
+    CommonModule,
+    MatButtonModule
   ],
   exports: [COMPONENTS]
 })
