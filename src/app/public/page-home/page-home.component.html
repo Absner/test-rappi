@@ -1,1 +1,3 @@
-<p>page-home works!</p>
+<div class="row">
+  <app-card-product *ngFor="let item of allProducts" [product]="item" class="col-md-3 mt-3"></app-card-product>
+</div>
