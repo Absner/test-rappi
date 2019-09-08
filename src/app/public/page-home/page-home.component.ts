@@ -31,9 +31,20 @@ export class PageHomeComponent implements OnInit {
   }
 
   private getProductos() {
-    this.productsService.getProducts().subscribe((response) =>  {
-      console.log('productos', response);
-      this.allProducts  = response;
+    this.productsService.getProducts().subscribe((response: Array<IProduct>) => {
+
+      this.allProducts = response;
+
+      this.allProducts.forEach((item: IProduct) => {
+
+        item.price = parseFloat(item.price) as any;
+      });
+
+      console.log('max',
+        Math.max.apply(Math, this.allProducts.map((item: IProduct) => {
+          return item.price;
+        }))
+      );
     });
   }
 
