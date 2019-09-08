@@ -3,9 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatInputModule } from '@angular/material/input';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CardProductComponent } from './card-product/card-product.component';
 import { FilterSearchComponent } from './filter-search/filter-search.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 const COMPONENTS: Array<any> = [
   NavbarComponent,
@@ -19,7 +21,10 @@ const COMPONENTS: Array<any> = [
     CommonModule,
     MatButtonModule,
     MatExpansionModule,
-    FlexLayoutModule
+    MatInputModule,
+    FlexLayoutModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports: [COMPONENTS]
 })

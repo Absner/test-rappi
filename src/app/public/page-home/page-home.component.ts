@@ -14,6 +14,7 @@ import { IProduct } from 'src/app/models/product.models';
 export class PageHomeComponent implements OnInit {
 
   public allProducts: Array<IProduct> = [];
+  public maxPrice: number = 0;
 
   constructor(
     private productsService: ProductsService
@@ -36,15 +37,12 @@ export class PageHomeComponent implements OnInit {
       this.allProducts = response;
 
       this.allProducts.forEach((item: IProduct) => {
-
         item.price = parseFloat(item.price) as any;
       });
-
-      console.log('max',
-        Math.max.apply(Math, this.allProducts.map((item: IProduct) => {
-          return item.price;
-        }))
-      );
+      this.maxPrice = Math.max.apply(Math, this.allProducts.map((item: IProduct) => {
+        return item.price;
+      }));
+      
     });
   }
 

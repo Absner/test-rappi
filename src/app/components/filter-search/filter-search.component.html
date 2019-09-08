@@ -5,26 +5,42 @@
         Filtro
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <div class="row">
-      <div class="col-md-4 border-right">
-        <div class="available">
-          Disponibilidad:
+    <form [formGroup]="formPrice" novalidate>
+      <div class="row">
+        <div class="col-md-4 border-right">
+          <div class="available">
+            Disponibilidad:
+          </div>
+          <div class="price">
+            Precio:
+            <div class="row">
+              <div class="col-md-4">
+                <mat-label class="text-gray-003 font-w-600">Max</mat-label>
+                <mat-form-field [floatLabel]="'never'" class="example-full-width">
+                  <input formControlName="max" name="max" matInput>
+                </mat-form-field>
+              </div>
+              <div class="col-md-4">
+                <mat-label class="text-gray-003 font-w-600">Min</mat-label>
+                <mat-form-field [floatLabel]="'never'" class="example-full-width">
+                  <input formControlName="min" name="min" matInput>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="price">
-          Precio:
+        <div class="col-md-4 border-right">
+          <div class="stock">
+            Cantidad en stock:
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="search">
+            Buscar:
+          </div>
         </div>
       </div>
-      <div class="col-md-4 border-right">
-        <div class="stock">
-          Cantidad en stock:
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="search">
-          Buscar:
-        </div>
-      </div>
-    </div>
+    </form>
 
   </mat-expansion-panel>
 </mat-accordion>
