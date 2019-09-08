@@ -9,6 +9,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 export class FilterSearchComponent implements OnInit {
 
   public formPrice: FormGroup;
+  @Output() filter = new EventEmitter();
 
   constructor(
     private fb: FormBuilder
@@ -16,6 +17,27 @@ export class FilterSearchComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
+  }
+
+  /**
+   * searchFilter
+   */
+  public searchFilter() {
+    this.filter.emit({
+      type: 'filter',
+      content: this.formPrice.value
+    });
+  }
+
+  /**
+   * orderFilter
+   */
+  public orderFilter(data: any) {
+
+    this.filter.emit({
+      type: 'order',
+      content: this.formPrice.value
+    });
   }
 
   private createForm() {
@@ -27,6 +49,12 @@ export class FilterSearchComponent implements OnInit {
 
       ])),
       stock: new FormControl(null, Validators.compose([
+
+      ])),
+      disponibility: new FormControl(true, Validators.compose([
+
+      ])),
+      order: new FormControl(null, Validators.compose([
 
       ]))
     });

@@ -4,6 +4,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CardProductComponent } from './card-product/card-product.component';
 import { FilterSearchComponent } from './filter-search/filter-search.component';
@@ -22,6 +23,7 @@ const COMPONENTS: Array<any> = [
     MatButtonModule,
     MatExpansionModule,
     MatInputModule,
+    MatRadioModule,
     FlexLayoutModule,
     ReactiveFormsModule,
     FormsModule

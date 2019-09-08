@@ -31,6 +31,13 @@ export class PageHomeComponent implements OnInit {
     console.log(product);
   }
 
+  /**
+   * getFilter
+   */
+  public getFilter(data: any) {
+    console.log('filter', data);
+  }
+
   private getProductos() {
     this.productsService.getProducts().subscribe((response: Array<IProduct>) => {
 

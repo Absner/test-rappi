@@ -1,5 +1,5 @@
 <div class="row">
-  <app-filter-search class="col-md-12"></app-filter-search>
+  <app-filter-search class="col-md-12" (filter)="getFilter($event)" ></app-filter-search>
 </div>
 <div class="row">
   <app-card-product *ngFor="let item of allProducts" [product]="item" (selection)="addCard($event)"
