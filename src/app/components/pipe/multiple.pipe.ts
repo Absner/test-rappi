@@ -8,7 +8,6 @@ import { IProduct } from 'src/app/models/product.models';
 export class MultiplePipe implements PipeTransform {
 
   transform(products: Array<IProduct>, filtro: IFilter): any {
-    console.log('filtro', filtro);
     return products.filter((product: IProduct) => (product.available === filtro.disponibility) ||
      ((product.quantity >= filtro.stock) && filtro.stock !== null));
   }

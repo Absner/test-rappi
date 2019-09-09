@@ -76,7 +76,6 @@ export class PageHomeComponent implements OnInit {
   private getProductoVategory(id: number) {
     this.productsService.getCategoryProducts(id).subscribe((response) =>  {
       this.allProducts  = response;
-      console.log('response', response);
     });
   }
 
