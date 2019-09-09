@@ -14,10 +14,10 @@
               <div class="col-md-12">
                 <mat-radio-group aria-labelledby="example-radio-group-label" formControlName="disponibility"
                   class="example-radio-group">
-                  <mat-radio-button class="example-radio-button mr-2" value="true">
+                  <mat-radio-button class="example-radio-button mr-2" [value]="available">
                     Disponible
                   </mat-radio-button>
-                  <mat-radio-button class="example-radio-button" value="false">
+                  <mat-radio-button class="example-radio-button" [value]="!available">
                     No disponible
                   </mat-radio-button>
                 </mat-radio-group>
@@ -28,15 +28,15 @@
             Precio:
             <div class="row mt-3">
               <div class="col-md-6">
-                <mat-label class="text-gray-003 font-w-600">Max</mat-label>
-                <mat-form-field [floatLabel]="'never'" class="example-full-width">
-                  <input formControlName="max" type="number" name="max" matInput>
-                </mat-form-field>
-              </div>
-              <div class="col-md-6">
                 <mat-label class="text-gray-003 font-w-600">Min</mat-label>
                 <mat-form-field [floatLabel]="'never'" class="example-full-width">
                   <input formControlName="min" type="number" name="min" matInput>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-label class="text-gray-003 font-w-600">Max</mat-label>
+                <mat-form-field [floatLabel]="'never'" class="example-full-width">
+                  <input formControlName="max" type="number" name="max" matInput>
                 </mat-form-field>
               </div>
             </div>

@@ -14,11 +14,12 @@ import { MultiplePipe } from './pipe/multiple.pipe';
 const COMPONENTS: Array<any> = [
   NavbarComponent,
   CardProductComponent,
-  FilterSearchComponent
+  FilterSearchComponent,
+  MultiplePipe
 ];
 
 @NgModule({
-  declarations: [COMPONENTS, MultiplePipe],
+  declarations: [COMPONENTS],
   imports: [
     CommonModule,
     MatButtonModule,

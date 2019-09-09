@@ -24,6 +24,9 @@ export class PageHomeComponent implements OnInit {
 
   ngOnInit() {
     this.getProductos();
+    this.newFilter = {
+      disponibility: true
+    };
   }
 
   /**
@@ -40,18 +43,11 @@ export class PageHomeComponent implements OnInit {
     console.log('filter', data);
     if (data.type === 'filter') {
       this.newFilter = data.content;
-      this.filterProducts();
+      // this.filterProducts(this.newFilter);
     }
   }
 
-  private filterProducts() {
-    const newArray: Array<any>  = this.allProducts.filter((item: IProduct) => {
-      console.log('hola', this.newFilter.disponibility);
-      return item.available === this.newFilter.disponibility;
-    });
-    console.log('array final', newArray);
 
-  }
 
   private getProductos() {
     this.productsService.getProducts().subscribe((response: Array<IProduct>) => {
