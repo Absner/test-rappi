@@ -5,12 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { PublicRoutingModule } from './public-routing.module';
 import { PageHomeComponent } from './page-home/page-home.component';
+import { PageShoppingComponent } from './page-shopping/page-shopping.component';
 
 
 
 
 @NgModule({
-  declarations: [PageHomeComponent],
+  declarations: [PageHomeComponent, PageShoppingComponent],
   imports: [
     CommonModule,
     PublicRoutingModule,
