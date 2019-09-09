@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
-import { IProduct } from 'src/app/models/product.models';
+import { IProduct, IShoppingCar } from 'src/app/models/product.models';
 import { IFilter } from 'src/app/models/filter.model';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { LoadShoppings } from 'src/app/store/shopping/actions/shopping.actions';
 
 
 @Component({
@@ -18,10 +20,12 @@ export class PageHomeComponent implements OnInit {
   public allProducts: Array<IProduct> = [];
   public maxPrice: number = 0;
   private newFilter: IFilter;
+  private shoppingCar: Array<IShoppingCar> = [];
 
   constructor(
     private productsService: ProductsService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private store: Store<any>
   ) { }
 
   ngOnInit() {
@@ -44,6 +48,17 @@ export class PageHomeComponent implements OnInit {
    */
   public addCard(product: IProduct) {
     console.log(product);
+
+    const prod: IShoppingCar = {
+      products: product,
+      cant: 0
+    };
+    this.shoppingCar.push({
+      products: product,
+      cant: 0
+    });
+    this.store.dispatch(new LoadShoppings(this.shoppingCar));
+    console.log('final carrito', this.shoppingCar, this.shoppingCar.indexOf(prod) === -1);
   }
 
   /**
@@ -74,8 +89,8 @@ export class PageHomeComponent implements OnInit {
   }
 
   private getProductoVategory(id: number) {
-    this.productsService.getCategoryProducts(id).subscribe((response) =>  {
-      this.allProducts  = response;
+    this.productsService.getCategoryProducts(id).subscribe((response) => {
+      this.allProducts = response;
     });
   }
 

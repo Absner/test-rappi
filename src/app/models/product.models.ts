@@ -6,3 +6,8 @@ export interface IProduct {
     available: boolean;
     sublevel_id: number;
 }
+
+export interface IShoppingCar {
+    products: IProduct;
+    cant: number;
+}

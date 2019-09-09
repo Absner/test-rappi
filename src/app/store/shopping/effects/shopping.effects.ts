@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 
-import { concatMap } from 'rxjs/operators';
+import { concatMap, tap } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
 import { ShoppingActionTypes, ShoppingActions } from '../actions/shopping.actions';
 
@@ -11,11 +11,12 @@ import { ShoppingActionTypes, ShoppingActions } from '../actions/shopping.action
 export class ShoppingEffects {
 
 
-  @Effect()
+  @Effect({
+    dispatch: false
+  })
   loadShoppings$ = this.actions$.pipe(
     ofType(ShoppingActionTypes.LoadShoppings),
-    /** An EMPTY observable only emits completion. Replace with your own observable API request */
-    concatMap(() => EMPTY)
+    tap((v) =>  console.log(v))
   );
 
 

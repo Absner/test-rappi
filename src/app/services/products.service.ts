@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, from } from 'rxjs';
-import { map, filter, exhaustMap, tap, flatMap } from 'rxjs/operators'
+import { map, filter, exhaustMap, tap, flatMap } from 'rxjs/operators';
 import { IProduct } from '../models/product.models';
 import { pipeFromArray } from 'rxjs/internal/util/pipe';
 
