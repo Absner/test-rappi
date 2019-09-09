@@ -10,6 +10,7 @@ import { CardProductComponent } from './card-product/card-product.component';
 import { FilterSearchComponent } from './filter-search/filter-search.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MultiplePipe } from './pipe/multiple.pipe';
+import { OrderPipe } from './pipe/order.pipe';
 
 const COMPONENTS: Array<any> = [
   NavbarComponent,
@@ -19,7 +20,7 @@ const COMPONENTS: Array<any> = [
 ];
 
 @NgModule({
-  declarations: [COMPONENTS],
+  declarations: [COMPONENTS, OrderPipe],
   imports: [
     CommonModule,
     MatButtonModule,
