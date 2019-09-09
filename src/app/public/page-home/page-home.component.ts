@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
 import { IProduct } from 'src/app/models/product.models';
 import { IFilter } from 'src/app/models/filter.model';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -19,11 +20,20 @@ export class PageHomeComponent implements OnInit {
   private newFilter: IFilter;
 
   constructor(
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.getProductos();
+
+    this.activatedRoute.params.subscribe((params: any) => {
+      if (params.id !== undefined) {
+        this.getProductoVategory(parseInt(params.id, 10));
+      } else {
+        this.getProductos();
+      }
+    });
+
     this.newFilter = {
       disponibility: true
     };
@@ -43,7 +53,6 @@ export class PageHomeComponent implements OnInit {
     console.log('filter', data);
     if (data.type === 'filter') {
       this.newFilter = data.content;
-      // this.filterProducts(this.newFilter);
     }
   }
 
@@ -61,6 +70,13 @@ export class PageHomeComponent implements OnInit {
         return item.price;
       }));
 
+    });
+  }
+
+  private getProductoVategory(id: number) {
+    this.productsService.getCategoryProducts(id).subscribe((response) =>  {
+      this.allProducts  = response;
+      console.log('response', response);
     });
   }
 
