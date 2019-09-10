@@ -22,7 +22,7 @@ export class PageHomeComponent implements OnInit {
   public allProducts: Array<IProduct> = [];
   public maxPrice: number = 0;
   public order: string = '';
-  private newFilter: IFilter;
+  public newFilter: IFilter;
   private shoppingCar: Array<IShoppingCar> = [];
 
   constructor(
