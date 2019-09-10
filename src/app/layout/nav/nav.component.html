@@ -1,15 +1,14 @@
 <div>
-  <h3>
-    Productos
+  <h3 class="mb-3 mt-3" >
+    Categoría
   </h3>
 </div>
 <ul class="nav flex-column">
   <li class="nav-item" *ngFor="let item of menu.categories; let i = index">
     <a class="nav-link" *ngIf="item.sublevels === undefined" [routerLink]="['/products/category', item.id]"
-      routerLinkActive="active">
+      routerLinkActive="activate-route">
       {{item.name}}
     </a>
-
 
     <a data-toggle="collapse" *ngIf="item.sublevels !== undefined" href="#{{'m' + i}}" class="nav-link">
       {{item.name}}
@@ -20,7 +19,7 @@
       <ul class="nav flex-column">
         <li *ngFor="let childitem of item.sublevels; let j = index" class="nav-item">
           <a class="nav-link" *ngIf="childitem.sublevels === undefined"
-            [routerLink]="['/products/category', childitem.id]" routerLinkActive="active">
+            [routerLink]="['/products/category', childitem.id]" routerLinkActive="activate-route">
             {{childitem.name}}
           </a>
 
@@ -34,7 +33,7 @@
               <li *ngFor="let levelthree of childitem.sublevels; let p = index" class="nav-item">
 
                 <a class="nav-link" *ngIf="levelthree.sublevels === undefined"
-                  [routerLink]="['/products/category', levelthree.id]" routerLinkActive="active">
+                  [routerLink]="['/products/category', levelthree.id]" routerLinkActive="activate-route">
                   {{levelthree.name}}
                 </a>
 
@@ -46,7 +45,7 @@
                 <div id="{{'m' + i + 'e' + j + 'p' + p}}" class="collapse" *ngIf="item.sublevels !== undefined">
                   <ul class="nav flex-column">
                     <li class="nav-item" *ngFor="let levelFour of levelthree.sublevels; let q = index">
-                      <a class="nav-link" [routerLink]="['/products/category', levelFour.id]" routerLinkActive="active">
+                      <a class="nav-link" [routerLink]="['/products/category', levelFour.id]" routerLinkActive="activate-route">
                         {{levelFour.name}}
                       </a>
                     </li>
