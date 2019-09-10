@@ -10,6 +10,8 @@ export class FilterSearchComponent implements OnInit {
 
   public formPrice: FormGroup;
   public available: boolean = true;
+  public init: Array<any> = [];
+
   @Output() filter = new EventEmitter();
 
   constructor(
@@ -17,6 +19,7 @@ export class FilterSearchComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.initial();
     this.createForm();
   }
 
@@ -52,13 +55,30 @@ export class FilterSearchComponent implements OnInit {
       stock: new FormControl(null, Validators.compose([
 
       ])),
-      disponibility: new FormControl(null, Validators.compose([
+      disponibility: new FormControl(3, Validators.compose([
 
       ])),
       order: new FormControl(null, Validators.compose([
 
       ]))
     });
+  }
+
+  private initial() {
+    this.init = [
+      {
+        id: true,
+        name: 'Disponible'
+      },
+      {
+        id: false,
+        name: 'No disponible'
+      },
+      {
+        id: 3,
+        name: 'Todos'
+      }
+    ];
   }
 
 }

@@ -22,6 +22,9 @@ export function reducer(state = initialState, action: ShoppingActions): State {
 
       return { ...state, shoppingCar: [...state.shoppingCar.slice(0, action.payload), ...state.shoppingCar.slice(action.payload + 1)] };
 
+    case ShoppingActionTypes.RestoreShopping:
+      return initialState;
+
     default:
       return state;
   }

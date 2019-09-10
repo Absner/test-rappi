@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import * as fromShopping from '../../store/index';
 import { IShoppingCar } from 'src/app/models/product.models';
-import { DeleteShopping } from 'src/app/store/shopping/actions/shopping.actions';
+import { DeleteShopping, RestoreShopping } from 'src/app/store/shopping/actions/shopping.actions';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -67,6 +67,10 @@ export class PageShoppingComponent implements OnInit, OnDestroy {
       type: 'success',
       title: 'Operación éxitosa',
       text: 'Gracias por comprar con nosotros'
+    }).then((result)  =>  {
+      if (result.value) {
+        this.store.dispatch(new RestoreShopping());
+      }
     });
   }
 

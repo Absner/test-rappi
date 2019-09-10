@@ -14,11 +14,8 @@
               <div class="col-md-12">
                 <mat-radio-group aria-labelledby="example-radio-group-label" formControlName="disponibility"
                   class="example-radio-group">
-                  <mat-radio-button class="example-radio-button mr-2" [value]="available">
-                    Disponible
-                  </mat-radio-button>
-                  <mat-radio-button class="example-radio-button" [value]="!available">
-                    No disponible
+                  <mat-radio-button *ngFor= "let item of init" class="example-radio-button mr-2" [value]="item.id">
+                    {{item.name}}
                   </mat-radio-button>
                 </mat-radio-group>
               </div>

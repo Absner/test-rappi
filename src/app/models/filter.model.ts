@@ -2,6 +2,6 @@ export interface IFilter {
     max?: number;
     min?: number;
     stock?: number;
-    disponibility?: boolean;
+    disponibility?: any;
     order?: string;
 }

@@ -21,6 +21,7 @@ export class PageHomeComponent implements OnInit {
 
   public allProducts: Array<IProduct> = [];
   public maxPrice: number = 0;
+  public order: string = '';
   private newFilter: IFilter;
   private shoppingCar: Array<IShoppingCar> = [];
 
@@ -42,7 +43,7 @@ export class PageHomeComponent implements OnInit {
     });
 
     this.newFilter = {
-      disponibility: true
+      disponibility: 3
     };
   }
 
@@ -70,6 +71,11 @@ export class PageHomeComponent implements OnInit {
     console.log('filter', data);
     if (data.type === 'filter') {
       this.newFilter = data.content;
+    }
+
+    if (data.type === 'order') {
+      this.newFilter = data.content;
+      this.order = this.newFilter.order;
     }
   }
 

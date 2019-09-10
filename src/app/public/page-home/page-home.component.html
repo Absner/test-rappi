@@ -2,6 +2,6 @@
   <app-filter-search class="col-md-12" (filter)="getFilter($event)" ></app-filter-search>
 </div>
 <div class="row">
-  <app-card-product *ngFor="let item of allProducts | multiple:newFilter " [product]="item" (selection)="addCard($event)"
+  <app-card-product *ngFor="let item of allProducts | multiple:newFilter | order:order " [product]="item" (selection)="addCard($event)"
     class="col-md-4 mt-3"></app-card-product>
 </div>

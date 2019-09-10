@@ -3,7 +3,8 @@ import { IProduct, IShoppingCar } from 'src/app/models/product.models';
 
 export enum ShoppingActionTypes {
   LoadShoppings = '[Shopping] Load Shoppings product',
-  DeleteShopping = '[Shopping] Delete Shoppings product'
+  DeleteShopping = '[Shopping] Delete Shoppings product',
+  RestoreShopping = '[Shopping] Restore Shoppings product'
 }
 
 export class LoadShoppings implements Action {
@@ -16,7 +17,12 @@ export class DeleteShopping implements Action {
   constructor(public payload: number) { }
 }
 
+export class RestoreShopping implements Action {
+  readonly type = ShoppingActionTypes.RestoreShopping;
+}
+
 
 export type ShoppingActions =
   | LoadShoppings
-  | DeleteShopping;
+  | DeleteShopping
+  | RestoreShopping;
