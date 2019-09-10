@@ -9,18 +9,22 @@ export interface State {
 }
 
 export const initialState: State = {
-  shoppingCar: null
+  shoppingCar: []
 };
 
 export function reducer(state = initialState, action: ShoppingActions): State {
   switch (action.type) {
 
     case ShoppingActionTypes.LoadShoppings:
-      return { ...state, shoppingCar: action.payload};
+      return { ...state, shoppingCar: [action.payload, ...state.shoppingCar] };
+
+    case ShoppingActionTypes.DeleteShopping:
+
+      return { ...state, shoppingCar: [...state.shoppingCar.slice(0, action.payload), ...state.shoppingCar.slice(action.payload + 1)] };
 
     default:
       return state;
   }
 }
 
-export const selectShoppingCar  = (state: State)  =>  state.shoppingCar;
+export const selectShoppingCar = (state: State) => state.shoppingCar;

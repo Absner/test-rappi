@@ -3,7 +3,8 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import * as fromShopping from '../../store/index';
 import { IShoppingCar } from 'src/app/models/product.models';
-import { LoadShoppings } from 'src/app/store/shopping/actions/shopping.actions';
+import { DeleteShopping } from 'src/app/store/shopping/actions/shopping.actions';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-page-shopping',
@@ -27,6 +28,7 @@ export class PageShoppingComponent implements OnInit, OnDestroy {
     this.getShopping = this.getShopping$.subscribe((car: Array<IShoppingCar>) => {
       if (car !== null) {
         const nuevoCar: Array<IShoppingCar> = car;
+        this.shopping = [];
         nuevoCar.forEach((item: IShoppingCar) => {
           this.shopping.push({
             products: item.products,
@@ -34,9 +36,10 @@ export class PageShoppingComponent implements OnInit, OnDestroy {
           });
         });
       }
+      this.totalAmmount();
     });
 
-    this.totalAmmount();
+    // this.totalAmmount();
   }
 
   /**
@@ -51,10 +54,23 @@ export class PageShoppingComponent implements OnInit, OnDestroy {
    * del
    */
   public del(index: number) {
-    this.shopping.splice(index, 1);
+    // this.shopping.splice(index, 1);
     this.totalAmmount();
-    this.store.dispatch(new LoadShoppings(this.shopping));
+    this.store.dispatch(new DeleteShopping(index));
   }
+
+  /**
+   * successPayment
+   */
+  public successPayment() {
+    Swal.fire({
+      type: 'success',
+      title: 'Operación éxitosa',
+      text: 'Gracias por comprar con nosotros'
+    });
+  }
+
+
 
   private totalAmmount() {
     this.total = 0;

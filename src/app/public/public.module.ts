@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { PublicRoutingModule } from './public-routing.module';
 import { PageHomeComponent } from './page-home/page-home.component';
@@ -23,7 +24,8 @@ import { PageShoppingComponent } from './page-shopping/page-shopping.component';
     HttpClientModule,
     RouterModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatSnackBarModule
   ]
 })
 export class PublicModule { }

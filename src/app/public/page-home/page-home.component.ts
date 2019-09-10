@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProductsService } from 'src/app/services/products.service';
 import { IProduct, IShoppingCar } from 'src/app/models/product.models';
 import { IFilter } from 'src/app/models/filter.model';
@@ -26,7 +27,8 @@ export class PageHomeComponent implements OnInit {
   constructor(
     private productsService: ProductsService,
     private activatedRoute: ActivatedRoute,
-    private store: Store<fromShopping.State>
+    private store: Store<fromShopping.State>,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -53,8 +55,12 @@ export class PageHomeComponent implements OnInit {
       products: product,
       cant: 1
     });
-    this.store.dispatch(new LoadShoppings(this.shoppingCar));
-    console.log('final carrito', this.shoppingCar);
+    this.store.dispatch(new LoadShoppings({
+      products: product,
+      cant: 1
+    }));
+    this.openSnackBar();
+
   }
 
   /**
@@ -65,6 +71,12 @@ export class PageHomeComponent implements OnInit {
     if (data.type === 'filter') {
       this.newFilter = data.content;
     }
+  }
+
+  public openSnackBar() {
+    this.snackBar.open('Producto agregado', '', {
+      duration: 2000,
+    });
   }
 
 

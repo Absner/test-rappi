@@ -1,5 +1,10 @@
 <div class="row">
-    $<h2>{{total}}</h2>
+  <div class="col-md-2">
+    <button mat-raised-button (click)="successPayment()" color="primary">Pagar</button>
+  </div>
+  <div class="col-md-3">
+    <h2>${{total | number}}</h2>
+  </div>
 </div>
 <div class="row">
   <table class="table table-striped">
@@ -18,13 +23,12 @@
         <th scope="row">{{i+1}}</th>
         <td>{{item.products.name}}</td>
         <td>
-            <app-number-count [init]="item.cant" (count)="price($event, item, i)" ></app-number-count>
+          <app-number-count [init]="item.cant" (count)="price($event, item, i)"></app-number-count>
         </td>
         <td>${{item.products.price}}</td>
-        <td>${{item.products.price * item.cant}}</td>
+        <td>${{item.products.price * item.cant | number}}</td>
         <td>
-          <button (click)="del(i)"  class="btn-btn" mat-icon-button
-            aria-label="Example icon-button with a heart icon">
+          <button (click)="del(i)" class="btn-btn" mat-icon-button aria-label="Example icon-button with a heart icon">
             <i class="material-icons">
               delete
             </i>
