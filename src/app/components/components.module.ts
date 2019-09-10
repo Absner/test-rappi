@@ -11,16 +11,20 @@ import { FilterSearchComponent } from './filter-search/filter-search.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MultiplePipe } from './pipe/multiple.pipe';
 import { OrderPipe } from './pipe/order.pipe';
+import { RouterModule } from '@angular/router';
+import { NumberCountComponent } from './number-count/number-count.component';
 
 const COMPONENTS: Array<any> = [
   NavbarComponent,
   CardProductComponent,
   FilterSearchComponent,
-  MultiplePipe
+  MultiplePipe,
+  NumberCountComponent,
+  OrderPipe
 ];
 
 @NgModule({
-  declarations: [COMPONENTS, OrderPipe],
+  declarations: [COMPONENTS],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -29,7 +33,8 @@ const COMPONENTS: Array<any> = [
     MatRadioModule,
     FlexLayoutModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   exports: [COMPONENTS]
 })

@@ -5,6 +5,7 @@ import { IFilter } from 'src/app/models/filter.model';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { LoadShoppings } from 'src/app/store/shopping/actions/shopping.actions';
+import * as fromShopping from '../../store/index';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class PageHomeComponent implements OnInit {
   constructor(
     private productsService: ProductsService,
     private activatedRoute: ActivatedRoute,
-    private store: Store<any>
+    private store: Store<fromShopping.State>
   ) { }
 
   ngOnInit() {
@@ -47,18 +48,13 @@ export class PageHomeComponent implements OnInit {
    * addCard
    */
   public addCard(product: IProduct) {
-    console.log(product);
 
-    const prod: IShoppingCar = {
-      products: product,
-      cant: 0
-    };
     this.shoppingCar.push({
       products: product,
-      cant: 0
+      cant: 1
     });
     this.store.dispatch(new LoadShoppings(this.shoppingCar));
-    console.log('final carrito', this.shoppingCar, this.shoppingCar.indexOf(prod) === -1);
+    console.log('final carrito', this.shoppingCar);
   }
 
   /**
